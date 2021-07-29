@@ -1,0 +1,186 @@
+body::after {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	z-index: -100;
+	content: url(../img/background.png) url(../img/dino_idle.png)
+		url(../img/dino_run.png) url(../img/dino_jump.png) url(../img/cactus.png);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+}
+
+.game-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.background {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 1200px;
+	height: 700px;
+	background: url(../img/background.png);
+	background-size: 100% 100%;
+	position: absolute;
+	border: solid 4px rgb(180, 107, 11);
+    overflow: hidden;
+}
+
+.menu {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	display: grid;
+	grid-auto-rows: 1fr;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	z-index: 2;
+	border: solid 2px white;
+	color: white;
+	background-color: rgba(119, 99, 78, 0.8);
+	user-select: none;
+}
+
+.menu .start {
+	border: none;
+	background-color: white;
+	cursor: pointer;
+	height: 50%;
+	opacity: 0.9;
+	transition: all ease-in 0.2s;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.menu .start:hover {
+	opacity: 1;
+	transform: scale(1.1);
+}
+
+.cactus {
+	display: inline-flex;
+	position: absolute;
+	bottom: 75px;
+	align-items: baseline;
+	background-attachment: fixed;
+	filter: brightness(110%);
+}
+
+.cactus-item {
+	background-image: url(../img/cactus.png);
+	background-size: 100% 100%;
+    width: 40px;
+}
+
+.dino {
+	background: url(../img/dino_idle.png);
+	background-size: calc(10 * 100%) 100%;
+	width: 100px;
+	height: 80px;
+	position: absolute;
+	left: 150px;
+	top: 542px;
+}
+
+.dino.idle {
+	background: url(../img/dino_idle.png);
+	background-size: calc(10 * 100%) 100%;
+	animation: dino-idle 0.5s steps(10) infinite;
+	-webkit-animation: dino-idle 0.5s steps(10) infinite;
+}
+
+.dino.run {
+	background: url(../img/dino_run.png);
+	background-size: calc(8 * 100%) 100%;
+	animation: dino-run 0.7s steps(8) infinite;
+	-webkit-animation: dino-run 0.7s steps(8) infinite;
+}
+
+.dino.jump {
+	background: url(../img/dino_jump.png);
+	background-size: calc(12 * 100%) 100%;
+	animation: dino-jump 1s steps(8) forwards;
+	-webkit-animation: dino-jump 1s steps(8) forwards;
+}
+
+.dino.death {
+	background: url(../img/dino_death.png);
+	background-size: calc(8 * 100%) 100%;
+	animation: dino-death .5s steps(7) forwards;
+	-webkit-animation: dino-death .5s steps(7) forwards;
+}
+
+@keyframes dino-idle {
+	from {
+		background-position: 0;
+	}
+	to {
+		background-position: calc(-10 * 100%);
+	}
+}
+
+@keyframes dino-run {
+	from {
+		background-position: 0;
+	}
+	to {
+		background-position: calc(-8 * 100%);
+	}
+}
+
+@keyframes dino-jump {
+	from {
+		background-position: calc(-3 * 100%);
+	}
+	to {
+		background-position: calc(-11 * 100%);
+	}
+}
+
+@keyframes dino-death {
+	from {
+		background-position: 0;
+	}
+	to {
+		background-position: calc(-7 * 100%);
+	}
+}
+
+.scoreboard {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	position: absolute;
+	left: 1030px;
+	top: 5px;
+	width: 155px;
+	height: 50px;
+	color: rgb(0, 0, 0);
+	font-size: .8em;
+	font-weight: 500;
+}
+
+.score {
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: 600;
+}
+
+.hide {
+	display: none;
+}
